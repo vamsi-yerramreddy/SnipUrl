@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>URL Shortener</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .url-form {
+            margin-bottom: 20px;
+        }
+
+        .shortened-url {
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="mt-4">URL Shortener</h2>
+
+    <!-- Form to Enter Long URL -->
+    <form th:action="@{/shorten}" method="post" class="url-form">
+        <div class="form-group">
+            <label for="longUrl">Enter Long URL:</label>
+            <input type="text" id="longUrl" name="longUrl" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Shorten URL</button>
+    </form>
+
+    <!-- Display Shortened URL as Clickable Link -->
+    <div th:if="${shortUrl}" class="shortened-url">
+        <p>Shortened URL:</p>
+        <!-- Use the domainName attribute directly from the model -->
+        <a th:href="'http://' + ${domainName} + ${shortUrl}"
+           th:text="'http://' + ${domainName}  + ${shortUrl}"
+           class="btn btn-link"
+           target="_blank"></a>
+    </div>
+
+
+    <!--
+     <div th:if="${shortUrl}" class="shortened-url">
+   <p>Shortened URL:</p>
+     <a th:href="@{'http://' + ${domainName}  + ${shortUrl}}"
+        th:text="'http://' + ${domainName}  + ${shortUrl}" class="btn btn-success" role="button"
+        target="_blank"></a>
+ </div>
+     -->
+
+<!--
+<div th:if="${shortUrl}" class="shortened-url">
+        <p>Shortened URL:</p>
+        <a th:href="@{'http://localhost:8080/' + ${shortUrl}}" th:text="@{'localhost:8080/' + ${shortUrl}}"
+           class="btn btn-success" role="button" target="_blank"></a>
+    </div>
+-->
+
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
