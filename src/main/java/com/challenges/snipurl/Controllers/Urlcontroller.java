@@ -42,7 +42,7 @@ public class Urlcontroller {
                 String shortUrl= urlService.persist(longUrl);
                 model.addAttribute("shortUrl",shortUrl);
                    // model.addAttribute("domainName","localhost:8080/");
-                model.addAttribute("domainName","snipurl.herokuapp.com/");
+                model.addAttribute("domainName","snipurl.up.railway.app");
                 return "urlTemplate";
         }
     @ExceptionHandler(Exception.class)
