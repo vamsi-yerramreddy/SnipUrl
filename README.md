@@ -16,13 +16,16 @@ Check out the live demo of SnipURL at [https://snipurl-demo.railway.app](https:/
 1. **Create a Railway Account:**
    Sign up for a Railway account at [https://railway.app](https://railway.app/).
 
-2. **Connect Your GitHub Repository:**
+2. **Create a mySql instance:**
+   Connect the Data layer to the application. 
+   
+3. **Connect Your GitHub Repository:**
    Connect your GitHub repository to Railway.
-
-3. **Configure Your Project:**
+   
+4. **Configure Your Project:**
    Change the environment variables
 
-4. **Deploy Your Application:**
+5. **Deploy Your Application:**
    Deploy your Spring Boot application on Railway.
 
 ## Development Setup
