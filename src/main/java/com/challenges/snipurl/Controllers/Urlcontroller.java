@@ -31,7 +31,7 @@ public class Urlcontroller {
                     response.setHeader(HttpHeaders.LOCATION, longUrl);
                     return "redirect:"+longUrl;
                 }else{
-                    model.addAttribute("errorMessage","Invalid Url");
+                    model.addAttribute("errorMessage","given shortUrl is not found");
                     return "Error";
                 }
 
@@ -41,17 +41,15 @@ public class Urlcontroller {
         public String postShortUrl(@RequestParam("longUrl") String longUrl, Model model){
                 String shortUrl= urlService.persist(longUrl);
                 model.addAttribute("shortUrl",shortUrl);
-                model.addAttribute("domainName","localhost:8080/");
+                   // model.addAttribute("domainName","localhost:8080/");
+                model.addAttribute("domainName","snipurl.herokuapp.com/");
                 return "urlTemplate";
         }
     @ExceptionHandler(Exception.class)
     public String handleException(Exception e, Model model) {
         e.printStackTrace();
-
-        // Set an error message in the model
-        model.addAttribute("errorMessage", "An unexpected error occurred.");
-
-        // Return the error view (you can customize the view name)
+        String message = (e != null ? e.getMessage() : "Unknown error");
+        model.addAttribute("errorMessage", message);
         return "Error";
     }
 

@@ -11,8 +11,12 @@ import java.util.Random;
 
 @Service
 public class UrlService {
+    UrlRepository urlRepository;
+
     @Autowired
-    private UrlRepository urlRepository;
+    public  UrlService(UrlRepository urlRepository){
+        this.urlRepository = urlRepository;
+    }
 
     public String persist(String longUrl){
         Url url = new Url();

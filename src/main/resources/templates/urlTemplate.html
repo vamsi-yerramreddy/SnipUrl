@@ -51,8 +51,8 @@
     <div th:if="${shortUrl}" class="shortened-url">
         <p>Shortened URL:</p>
         <!-- Use the domainName attribute directly from the model -->
-        <a th:href="'http://' + ${domainName} + ${shortUrl}"
-           th:text="'http://' + ${domainName}  + ${shortUrl}"
+        <a th:href="'https://' + ${domainName} + ${shortUrl}"
+           th:text="'https://' + ${domainName}  + ${shortUrl}"
            class="btn btn-link"
            target="_blank"></a>
     </div>
